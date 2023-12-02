@@ -1,0 +1,36 @@
+
+
+name: CI
+
+
+on:
+  
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  
+  workflow_dispatch:
+
+
+jobs:
+  
+  build:
+    
+    runs-on: ubuntu-latest
+
+    
+    steps:
+      
+      - uses: actions/checkout@v3
+
+      
+      - name: Install dependencies
+        run: npm install
+      - name: Install dependencies
+        run: npm install cypress-xpath --save-dev
+
+     
+      - name: Run Cypress
+        run: npx cypress run
